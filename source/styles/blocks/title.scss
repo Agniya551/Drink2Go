@@ -1,0 +1,21 @@
+/* Классы для заголовков */
+
+.title {
+  @include font-settings($font-montserrat, normal, 700, 18, 32);
+
+  &--sm {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  &--lg {
+    font-size: 24px;
+    line-height: 36px;
+  }
+
+  &--xl {
+    font-size: 36px;
+    line-height: 48px;
+    letter-spacing: 0.02em;
+  }
+}

@@ -1,0 +1,50 @@
+/* Классы для блока с пагинацией каталога */
+
+.pagination__button {
+
+  &--current {
+    font-weight: 600;
+    color: $text-color-primary;
+    background-color: transparent;
+
+    &:hover {
+      color: $text-color-primary;
+      background-color: transparent;
+      pointer-events: none;
+    }
+
+    &:active {
+      background-color: transparent;
+    }
+  }
+}
+
+.pagination__icon {
+  &::before {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: $icon-color-accent;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: 10px 10px;
+    mask-image: url("../../icons/arrow-sm.svg");
+  }
+
+  &:hover::before {
+    background-color: $icon-color-inverse;
+  }
+
+  &:disabled::before {
+    background-color: $icon-color-inverse;
+  }
+
+  &--prev::before {
+    transform: rotate(90deg);
+  }
+
+  &--next::before {
+    transform: rotate(-90deg);
+  }
+}

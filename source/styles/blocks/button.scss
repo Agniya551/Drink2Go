@@ -1,0 +1,48 @@
+/* Классы для кнопок */
+
+.button {
+  @include font-settings($font-montserrat, normal, 400, 16, 24);
+  padding: 8px 20px;
+  align-content: center;
+  background-color: $button-color-primary;
+  color: $text-color-inverse;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: $button-color-primary-subtle;
+  }
+
+  &:active {
+    background-color: $button-color-primary-bold;
+  }
+
+  &:disabled {
+    background-color: $button-color-primary-disabled;
+  }
+
+  &--secondary {
+    color: $icon-color-accent;
+    background-color: $button-color-secondary;
+
+    &:hover {
+      color: $icon-color-inverse;
+      background-color: $button-color-primary-subtle;
+    }
+
+    &:active {
+      background-color: $button-color-primary-bold;
+    }
+
+    &:disabled {
+      color: $icon-color-inverse;
+      background-color: $button-color-secondary-disabled;
+    }
+  }
+
+  &--sm {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}

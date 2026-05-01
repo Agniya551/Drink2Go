@@ -1,0 +1,8 @@
+/* Классы для подписей над крупным заголовком */
+
+.eyebrow {
+  @include font-settings($font-montserrat, normal, 700, 12, 16);
+  letter-spacing: 0.04em;
+  color: $text-color-accent;
+  text-transform: uppercase;
+}

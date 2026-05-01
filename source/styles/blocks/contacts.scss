@@ -1,0 +1,35 @@
+/* Классы для блока с контактами */
+
+.contacts__icon {
+  &::before {
+    content: "";
+    display: block;
+    width: 13px;
+    height: 16px;
+    background-size: 13px 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+.contacts__address {
+  &.contacts__icon::before {
+    background-image: url("../../icons/address.svg");
+  }
+}
+
+.contacts__tel {
+  color: $text-color-primary;
+
+  &:hover {
+    color: $text-color-accent;
+  }
+
+  &:active {
+    color: $text-color-accent-bold;
+  }
+
+  &.contacts__icon::before {
+    background-image: url("../../icons/phone.svg");
+  }
+}

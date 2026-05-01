@@ -1,0 +1,31 @@
+/* Классы для блока с преимуществами */
+
+
+
+.features__icon {
+  &::before {
+    content: "";
+    display: block;
+    width: 52px;
+    height: 56px;
+    background-size: 52px 56px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &--speed::before {
+    background-image: url("../../icons/speed.svg");
+  }
+
+  &--fit::before {
+    background-image: url("../../icons/fit.svg");
+  }
+
+  &--energy::before {
+    background-image: url("../../icons/energy.svg");
+  }
+
+  &--eco::before {
+    background-image: url("../../icons/ecology.svg");
+  }
+}
