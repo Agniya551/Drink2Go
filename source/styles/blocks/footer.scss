@@ -1,1 +1,39 @@
 /* Классы для блока Footer */
+
+.footer__dev {
+  font-size: 12px;
+  line-height: 16px;
+  color: $text-color-secondary;
+}
+
+.footer__dev-link {
+  color: $text-color-secondary;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 12px;
+    height: 16px;
+    background-color: $icon-color-primary-subtle;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: 12px 16px;
+    mask-image: url("../../icons/logo-html-academy.svg");
+  }
+
+  &:hover::before {
+    background-color: $icon-color-accent;
+  }
+
+  &:active::before {
+    background-color: $icon-color-accent-bold;
+  }
+
+  &:hover {
+    color: $text-color-accent;
+  }
+
+  &:active {
+    color: $text-color-accent-bold;
+  }
+}

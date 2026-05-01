@@ -1,1 +1,49 @@
 /* Классы для блока с навигацией */
+
+.navbar {
+  @include font-settings($font-montserrat, normal, 500, 12, 16);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.navbar__link {
+  color: inherit;
+
+  &:hover {
+    color: $text-color-accent;
+  }
+}
+
+.navbar__icon {
+  &::before {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 60px;
+    background-color: $icon-color-primary;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: 16px 16px;
+  }
+
+  &:hover::before {
+    background-color: $icon-color-accent;
+    color: $text-color-accent;
+  }
+
+  &--login::before {
+    mask-image: url("../../icons/user.svg");
+  }
+
+  &--cart::before {
+    mask-image: url("../../icons/cart.svg");
+  }
+
+  &--close::before {
+    mask-image: url("../../icons/menu.svg");
+  }
+
+  &--opened::before {
+    mask-image: url("../../icons/close.svg");
+  }
+}

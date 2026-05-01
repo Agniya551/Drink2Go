@@ -6,12 +6,14 @@ $bg-color-primary: #ffffff;
 $bg-color-secondary: #f8f8f8;
 $bg-color-accent-milky: #f3ebe1;
 $bg-color-accent-violet: #eae6fc;
+$bg-color-accent-violet-subtle: #f0ebff;
 $bg-color-accent-grey: #e5e6e8;
 
 $text-color-primary: #333333;
-$icon-color-accent: #7859cf;
-$icon-color-accent-subtle: #9070ec;
-$icon-color-accent-bold: #593cac;
+$text-color-secondary: #bdbdbd;
+$text-color-accent: #7859cf;
+$text-color-accent-subtle: #9070ec;
+$text-color-accent-bold: #593cac;
 $text-color-inverse: #ffffff;
 
 $button-color-primary: #7859cf;
@@ -21,8 +23,24 @@ $button-color-primary-disabled: #bdbdbd;
 $button-color-secondary: #ffffff;
 $button-color-secondary-disabled: #e2e2e2;
 
+$icon-color-primary: #333333;
+$icon-color-primary-subtle: #bdbdbd;
+$icon-color-accent: #7859cf;
+$icon-color-accent-bold: #593cac;
+$icon-color-inverse: #ffffff;
+
+$input-color-primary: #9070ec;
+$input-color-primary-bold: #7859cf;
+$input-color-primary-bolder: #593cac;
+$input-color-secondary: #bdbdbd;
+$input-color-secondary-disabled: #e2e2e2;
+
 /* Viewports */
 
 $mobile-width: 320px;
 $tablet-width: 768px;
 $desktop-width: 1440px;
+
+/* Fonts */
+
+$font-montserrat: "Montserrat", "Arial", sans-serif;

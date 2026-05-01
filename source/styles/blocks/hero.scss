@@ -1,1 +1,49 @@
 /* Классы для главного блока с новинками товаров */
+
+.hero__price {
+  line-height: 32px;
+
+  &::after{
+    content: '₽';
+  }
+
+  &--before {
+    font-size: 16px;
+    color: $text-color-accent;
+    text-decoration: line-through;
+  }
+
+  &--after {
+    font-size: 20px;
+    font-weight: 600;
+  }
+}
+
+/* -------------------------------------------------------- */
+/* Управляющие элементы слайдера */
+/* -------------------------------------------------------- */
+
+.hero__button {
+  &.disabled {
+    background-color: $button-color-primary-disabled;
+    pointer-events: none;
+  }
+}
+
+.hero__arrow {
+  &::before {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: $icon-color-accent;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: 20px 20px;
+    mask-image: url("../../icons/arrow.svg");
+  }
+
+  &--next::before {
+    transform: rotate(180deg);
+  }
+}

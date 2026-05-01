@@ -1,1 +1,19 @@
 /* Классы для блока фильтрами */
+
+.filter__title {
+  font-weight: 600;
+}
+
+.filter__input {
+  @include font-settings($font-montserrat, normal, 500, 16, 24);
+  color: $text-color-primary;
+
+  &::placeholder {
+    color: $text-color-secondary;
+  }
+}
+
+.filter__list {
+  font-size: 16px;
+  line-height: 24px;
+}

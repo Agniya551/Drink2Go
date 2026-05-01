@@ -1,1 +1,29 @@
 /* Классы для блока карточек товаров в каталоге */
+
+.product__title {
+  color: $text-color-primary;
+}
+
+.product__price {
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 600;
+
+  &::after{
+    content: '₽';
+  }
+}
+
+.product__button {
+  &::before {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 16px;
+    background-color: $icon-color-inverse;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: 20px 16px;
+    mask-image: url("../../icons/cart-add.svg");
+  }
+}

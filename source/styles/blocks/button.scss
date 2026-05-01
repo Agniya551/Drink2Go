@@ -1,7 +1,7 @@
 /* Классы для кнопок */
 
 .button {
-  @include font-settings("Montserrat", normal, 400, 16, 24);
+  @include font-settings($font-montserrat, normal, 400, 16, 24);
   padding: 8px 20px;
   align-content: center;
   background-color: $button-color-primary;
@@ -27,6 +27,7 @@
     background-color: $button-color-secondary;
 
     &:hover {
+      color: $icon-color-inverse;
       background-color: $button-color-primary-subtle;
     }
 
@@ -35,6 +36,7 @@
     }
 
     &:disabled {
+      color: $icon-color-inverse;
       background-color: $button-color-secondary-disabled;
     }
   }
