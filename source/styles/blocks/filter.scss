@@ -1,11 +1,36 @@
 /* Классы для блока фильтрами */
 
+.filter {
+  @media (min-width: $tablet-width) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 30px;
+  }
+
+  @media (min-width: $desktop-width) {
+    grid-template-columns: 1fr;
+    align-content: start;
+  }
+}
+
+.filter__group {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
 .filter__title {
   font-weight: 600;
 }
 
+.filter__price {
+  display: flex;
+  max-width: 280px;
+}
+
 .filter__input {
   @include font-settings($font-montserrat, normal, 500, 16, 24);
+  min-width: 0;
   color: $text-color-primary;
 
   &::placeholder {
@@ -16,4 +41,16 @@
 .filter__list {
   font-size: 16px;
   line-height: 24px;
+}
+
+.filter__button-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @media (min-width: $tablet-width) {
+    grid-column: 1/-1;
+    flex-direction: row;
+    justify-content: center;
+  }
 }

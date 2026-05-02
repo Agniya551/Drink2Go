@@ -1,16 +1,70 @@
 /* Классы для блока с преимуществами */
 
+.features {
+  padding: 50px 20px 60px;
+  text-align: center;
 
+  @media (min-width: $tablet-width) {
+    padding: 60px 20px 100px;
+  }
+
+  @media (min-width: $desktop-width) {
+    padding: 100px 40px 120px;
+  }
+}
+
+.features__list {
+  display: grid;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @media (min-width: $tablet-width) {
+    grid-template-columns: 1fr 1fr;
+    gap: 50px 30px;
+    padding: 0 10px;
+    text-align: left;
+  }
+
+  @media (min-width: $desktop-width) {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0;
+    text-align: center;
+  }
+}
+
+.features__item {
+  @media (min-width: $tablet-width) {
+    display: grid;
+    grid-template-columns: 72px 267px;
+  }
+
+  @media (min-width: $desktop-width) {
+    grid-template-columns: 1fr;
+  }
+}
 
 .features__icon {
   &::before {
     content: "";
     display: block;
+    justify-self: center;
     width: 52px;
     height: 56px;
     background-size: 52px 56px;
     background-repeat: no-repeat;
     background-position: center;
+
+    @media (min-width: $tablet-width) {
+      grid-column: 1/2;
+      grid-row: 1/3;
+    }
+
+    @media (min-width: $desktop-width) {
+      grid-column: auto;
+      grid-row: auto;
+    }
   }
 
   &--speed::before {
@@ -27,5 +81,29 @@
 
   &--eco::before {
     background-image: url("../../icons/ecology.svg");
+  }
+}
+
+.features__subtitle {
+  margin: 0;
+
+  @media (min-width: $tablet-width) {
+    grid-column: 2/3;
+  }
+
+  @media (min-width: $desktop-width) {
+    grid-column: auto;
+  }
+}
+
+.features__description {
+  margin: 0;
+
+  @media (min-width: $tablet-width) {
+    grid-column: 2/3;
+  }
+
+  @media (min-width: $desktop-width) {
+    grid-column: auto;
   }
 }

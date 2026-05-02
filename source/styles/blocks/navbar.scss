@@ -2,24 +2,104 @@
 
 .navbar {
   @include font-settings($font-montserrat, normal, 500, 12, 16);
+  display: flex;
+  flex: 1;
+  justify-content: end;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+
+  @media (min-width: $tablet-width) {
+    align-items: flex-start;
+  }
+}
+
+/* -------------------------------------------------------- */
+/* Список пунктов меню c иконками */
+/* -------------------------------------------------------- */
+
+.navbar__list {
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @media (min-width: $tablet-width) {
+    flex-shrink: 0;
+  }
+
+  @media (min-width: $desktop-width) {
+    column-gap: 20px;
+  }
+
+  &--primary {
+    display: none; // УДАЛИТЬ
+
+    @media (min-width: $tablet-width) {
+      display: flex;
+      justify-content: center;
+      max-width: 420px;
+      margin: 0 auto;
+      padding-left: 7px;
+    }
+
+    @media (min-width: $desktop-width) {
+      max-width: 650px;
+    }
+  }
+
+  &--secondary {
+    display: flex;
+    justify-content: right;
+
+    @media (min-width: $tablet-width) {
+      max-width: 180px;
+      padding-right: 20px;
+    }
+
+    @media (min-width: $desktop-width) {
+      max-width: 340px;
+      padding-right: 40px;
+    }
+  }
+}
+
+.navbar__item {
+  display: flex;
 }
 
 .navbar__link {
+  padding: 20px;
   color: inherit;
 
   &:hover {
     color: $text-color-accent;
   }
+
+  @media (min-width: $tablet-width) {
+    padding: 32px 20px;
+  }
+}
+
+.navbar__item:has(.navbar__toggle) {
+  @media (min-width: $tablet-width) {
+    display: none;
+  }
+}
+
+.navbar__toggle {
+  border: none;
 }
 
 .navbar__icon {
+  display: flex;
+  gap: 8px;
+  padding: 22px;
+
   &::before {
     content: "";
     display: block;
-    width: 60px;
-    height: 60px;
+    width: 16px;
+    height: 16px;
     background-color: $icon-color-primary;
     mask-position: center;
     mask-repeat: no-repeat;
@@ -29,6 +109,10 @@
   &:hover::before {
     background-color: $icon-color-accent;
     color: $text-color-accent;
+  }
+
+  @media (min-width: $tablet-width) {
+    padding: 32px 20px;
   }
 
   &--login::before {
@@ -45,5 +129,13 @@
 
   &--opened::before {
     mask-image: url("../../icons/close.svg");
+  }
+}
+
+.navbar__label {
+  display: none;
+
+  @media (min-width: $desktop-width) {
+    display: block;
   }
 }

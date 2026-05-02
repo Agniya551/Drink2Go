@@ -1,12 +1,104 @@
 /* Классы для блока Footer */
 
+picture:has(.footer__map),
+.footer__map {
+  display: block;
+  position: relative;
+  left: 50%;
+  min-width: 320px;
+  width: 100vw;
+  transform: translateX(-50%);
+
+  @media (min-width: $tablet-width) {
+    min-width: 768px;
+  }
+
+  @media (min-width: $desktop-width) {
+    min-width: 1440px;
+  }
+}
+
+.footer__lists {
+  display: grid;
+  grid-template-columns: 102px 1fr;
+
+  @media (min-width: $tablet-width) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (min-width: $desktop-width) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.footer__logo-link {
+  align-self: flex-start;
+  padding: 22px 0 0 20px;
+}
+
+picture:has(.footer__logo-img),
+.footer__logo-img {
+  display: block;
+  width: 82px;
+
+  @media (min-width: $tablet-width) {
+    width: 170px;
+  }
+}
+
+.footer__logo-label {
+  display: none;
+
+  @media (min-width: $desktop-width) {
+    display: flex;
+    grid-column: 1/2;
+  }
+}
+
+.footer__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer__list.social {
+  @media (min-width: $tablet-width) {
+    grid-column: 2 / 4;
+  }
+
+  @media (min-width: $desktop-width) {
+    grid-column: 1/2;
+  }
+}
+
+.footer__wrap {
+  grid-column: 1/-1;
+  padding: 20px;
+  border-top: 1px solid $border-color-primary;
+
+  @media (min-width: $tablet-width) {
+    grid-column: auto;
+    border: none;
+  }
+}
+
 .footer__dev {
+  display: flex;
+  justify-content: center;
+  padding: 20px 20px 30px;
   font-size: 12px;
   line-height: 16px;
   color: $text-color-secondary;
+  border-top: 1px solid $border-color-primary;
+
+  @media (min-width: $tablet-width) {
+    border: none;
+  }
 }
 
 .footer__dev-link {
+  display: flex;
+  margin-left: 3px;
   color: $text-color-secondary;
 
   &::before {
@@ -14,6 +106,7 @@
     display: block;
     width: 12px;
     height: 16px;
+    margin-right: 4px;
     background-color: $icon-color-primary-subtle;
     mask-position: center;
     mask-repeat: no-repeat;

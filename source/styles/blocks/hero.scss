@@ -1,13 +1,115 @@
 /* Классы для главного блока с новинками товаров */
 
+.hero {
+  position: relative;
+}
+
+.hero__slides {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hero__slide {
+  display: grid;
+  position: relative;
+  grid-template-columns: 1fr;
+  padding: 20px 20px 60px;
+  text-align: center;
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 100vw;
+    top: 0;
+    bottom: 0;
+    margin-left: -50vw;
+    left: 50%;
+  }
+
+  @media (min-width: $tablet-width) {
+    padding: 60px 80px 0;
+  }
+
+  @media (min-width: $desktop-width) {
+    grid-template-columns: 635px 1fr;
+  }
+
+  &--white::before {
+    background-color: $bg-color-accent-milky;
+  }
+
+  &--violet::before {
+    background-color: $bg-color-accent-violet;
+  }
+
+  &--black::before {
+    background-color: $bg-color-accent-grey;
+  }
+}
+
+picture:has(.hero__image) {
+  grid-row: 1/2;
+  margin: 0 auto;
+
+  @media (min-width: $tablet-width) {
+    grid-row: 5/6;
+  }
+
+  @media (min-width: $desktop-width) {
+    grid-column: 1/2;
+    grid-row: 1/6;
+    padding-left: 35px;
+  }
+}
+
+.hero__image {
+  display: block;
+  width: 280px;
+
+  @media (min-width: $tablet-width) {
+    width: 476px;
+  }
+
+  @media (min-width: $desktop-width) {
+    width: 600px;
+  }
+}
+
+.hero__eyebrow {
+  @media (min-width: $tablet-width) {
+    grid-row: 1/2;
+  }
+}
+
+.hero__description {
+  @media (min-width: $tablet-width) {
+    font-size: 20px;
+    line-height: 32px;
+  }
+}
+
+/* -------------------------------------------------------- */
+/* Цена */
+/* -------------------------------------------------------- */
+
+.hero__wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .hero__price {
   line-height: 32px;
+  overflow-wrap: anywhere;
 
-  &::after{
-    content: '₽';
+  &::after {
+    content: "₽";
   }
 
   &--before {
+    margin-right: 6px;
     font-size: 16px;
     color: $text-color-accent;
     text-decoration: line-through;
@@ -23,14 +125,38 @@
 /* Управляющие элементы слайдера */
 /* -------------------------------------------------------- */
 
+.hero__controls {
+  display: flex;
+  justify-content: center;
+}
+
 .hero__button {
+  margin-left: 20px;
+  align-self: self-start;
+
   &.disabled {
     background-color: $button-color-primary-disabled;
     pointer-events: none;
   }
 }
 
+.hero__step {
+  display: none;
+
+  @media (min-width: $tablet-width) {
+    display: block;
+  }
+}
+
 .hero__arrow {
+  position: absolute;
+  top: 50%;
+  height: 100%;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  transform: translateY(-50%);
+
   &::before {
     content: "";
     display: block;
@@ -43,7 +169,15 @@
     mask-image: url("../../icons/arrow.svg");
   }
 
-  &--next::before {
-    transform: rotate(180deg);
+  &--prev {
+    inset-inline-start: 0;
+  }
+
+  &--next {
+    inset-inline-end: 0;
+
+    &::before {
+      transform: rotate(180deg);
+    }
   }
 }

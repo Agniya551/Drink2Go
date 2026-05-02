@@ -1,0 +1,21 @@
+/* Классы для page */
+
+.page__body {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.page__container {
+  flex: 1;
+  align-self: center;
+  max-width: $mobile-width;
+
+  @media (min-width: $tablet-width) {
+    max-width: $tablet-width;
+  }
+
+  @media (min-width: $desktop-width) {
+    max-width: $desktop-width;
+  }
+}
