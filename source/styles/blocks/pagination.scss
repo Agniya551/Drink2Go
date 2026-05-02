@@ -1,6 +1,28 @@
 /* Классы для блока с пагинацией каталога */
 
+.pagination {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+
+  @media (min-width: $tablet-width) {
+    justify-content: end;
+  }
+}
+
+.pagination__item {
+  display: flex;
+}
+
 .pagination__button {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 40px;
+  padding: 8px 4px;
+  overflow-wrap: anywhere;
 
   &--current {
     font-weight: 600;

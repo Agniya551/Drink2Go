@@ -1,0 +1,38 @@
+/* Классы для социальных сетей */
+
+.social {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.social__icon {
+  &::before {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 40px;
+    background-color: $icon-color-primary-subtle;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: 20px 20px;
+  }
+
+  &:hover::before {
+    background-color: $icon-color-accent;
+  }
+
+  &--vk::before {
+    mask-image: url("../../icons/vk.svg");
+  }
+
+  &--pinterest::before {
+    mask-size: 22px 22px;
+    mask-image: url("../../icons/pinterest.svg");
+  }
+
+  &--ok::before {
+    mask-image: url("../../icons/ok.svg");
+  }
+}

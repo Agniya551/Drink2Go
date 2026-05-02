@@ -1,11 +1,35 @@
 /* Классы для блока с контактами */
 
+.contacts {
+  @media (min-width: $desktop-width) {
+    grid-row: 1/4;
+    grid-column: 4/5;
+  }
+}
+
+.contacts__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contacts__title {
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  color: $text-color-accent;
+}
+
 .contacts__icon {
+  display: flex;
+  gap: 6px;
+
   &::before {
     content: "";
     display: block;
+    flex-shrink: 0;
     width: 13px;
     height: 16px;
+    margin-top: 2px;
     background-size: 13px 16px;
     background-repeat: no-repeat;
     background-position: center;

@@ -1,20 +1,56 @@
 /* Классы для блока карточек товаров в каталоге */
 
+.product {
+  display: grid;
+  grid-template-columns: minmax(auto, 90px) 1fr;
+  padding: 40px 20px 20px;
+  background-color: $bg-color-primary;
+
+  @media (min-width: $tablet-width) {
+    padding: 50px 30px 30px;
+  }
+}
+
+.product__link-title {
+  grid-column: 1/-1;
+}
+
+.product__link-img {
+  grid-column: 1/-1;
+  grid-row: 1/2;
+  justify-items: center;
+}
+
+picture:has(.product__img),
+.product__img {
+  display: block;
+  width: 130px;
+}
+
 .product__title {
   color: $text-color-primary;
 }
 
+.product__description {
+  grid-column: 1/-1;
+}
+
 .product__price {
+  align-content: center;
+  margin: 0 0 -2px -2px;
   font-size: 20px;
   line-height: 32px;
   font-weight: 600;
 
-  &::after{
-    content: '₽';
+  &::after {
+    content: "₽";
   }
 }
 
 .product__button {
+  display: flex;
+  justify-self: self-end;
+
   &::before {
     content: "";
     display: block;

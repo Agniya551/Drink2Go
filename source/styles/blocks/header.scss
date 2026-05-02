@@ -1,6 +1,44 @@
 /* Классы для шапки страницы */
 
+.header {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  padding-left: 20px;
+}
+
+.header__logo {
+  padding: 12px 0;
+
+  @media (min-width: $tablet-width) {
+    padding: 22px 0;
+  }
+}
+
+picture:has(.header__logo-img),
+.header__logo-img {
+  display: block;
+  width: 32px;
+
+  @media (min-width: $tablet-width) {
+    width: 82px;
+  }
+
+  @media (min-width: $desktop-width) {
+    width: 170px;
+  }
+}
+
 .header__logo-label {
+  display: none;
+  margin: 0;
   font-size: 12px;
   line-height: 16px;
+
+  @media (min-width: $desktop-width) {
+    display: block;
+    max-width: 130px;
+    margin-left: 20px;
+    padding: 24px 0;
+  }
 }
