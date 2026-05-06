@@ -6,7 +6,11 @@
   overflow-x: hidden;
 }
 
+/* Устанавливаем фиксированную ширину контента и центрируем */
+
 .page__container {
+  display: flex;
+  flex-direction: column;
   flex: 1;
   align-self: center;
   max-width: $mobile-width;

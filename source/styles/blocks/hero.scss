@@ -5,18 +5,23 @@
 }
 
 .hero__slides {
+  position: relative;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
+/* -------------------------------------------------------- */
+/* Элемент слайдера */
+/* -------------------------------------------------------- */
+
 .hero__slide {
-  display: grid;
-  position: relative;
+  display: none;
   grid-template-columns: 1fr;
   padding: 20px 20px 60px;
   text-align: center;
 
+  /* Фон слайда. Растягивается на всю ширину viewport */
   &::before {
     content: "";
     position: absolute;
@@ -26,6 +31,14 @@
     bottom: 0;
     margin-left: -50vw;
     left: 50%;
+
+    @media (min-width: $tablet-width) {
+      margin-bottom: 188px;
+    }
+
+    @media (min-width: $desktop-width) {
+      margin-bottom: 0;
+    }
   }
 
   @media (min-width: $tablet-width) {
@@ -33,7 +46,14 @@
   }
 
   @media (min-width: $desktop-width) {
-    grid-template-columns: 635px 1fr;
+    grid-template-columns: 600px 1fr;
+    column-gap: 30px;
+    padding: 30px 80px 84px 105px;
+    text-align: left;
+  }
+
+  &--active {
+    display: grid;
   }
 
   &--white::before {
@@ -41,6 +61,7 @@
   }
 
   &--violet::before {
+
     background-color: $bg-color-accent-violet;
   }
 
@@ -49,18 +70,25 @@
   }
 }
 
+/* -------------------------------------------------------- */
+/* Фото товара */
+/* -------------------------------------------------------- */
+
 picture:has(.hero__image) {
+  display: grid;
   grid-row: 1/2;
+  justify-items: center;
   margin: 0 auto;
 
   @media (min-width: $tablet-width) {
     grid-row: 5/6;
+    margin: 20px 0 0;
   }
 
   @media (min-width: $desktop-width) {
     grid-column: 1/2;
     grid-row: 1/6;
-    padding-left: 35px;
+    margin: 0;
   }
 }
 
@@ -77,30 +105,53 @@ picture:has(.hero__image) {
   }
 }
 
+/* -------------------------------------------------------- */
+/* Текстовый контент */
+/* -------------------------------------------------------- */
+
 .hero__eyebrow {
+  margin-top: 10px;
+
   @media (min-width: $tablet-width) {
     grid-row: 1/2;
+    margin: 0;
+  }
+
+  @media (min-width: $desktop-width) {
+    margin-top: 150px;
   }
 }
 
+.hero__title {
+  margin: 4px 0 0;
+}
+
 .hero__description {
+  margin: 10px 0 0;
+
   @media (min-width: $tablet-width) {
+    margin: 16px 0 0;
     font-size: 20px;
     line-height: 32px;
   }
 }
 
-/* -------------------------------------------------------- */
 /* Цена */
-/* -------------------------------------------------------- */
 
 .hero__wrap {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 20px;
+
+  @media (min-width: $desktop-width) {
+    justify-content: start;
+    margin-top: 40px;
+  }
 }
 
 .hero__price {
+  min-width: 40px;
   line-height: 32px;
   overflow-wrap: anywhere;
 
@@ -125,11 +176,6 @@ picture:has(.hero__image) {
 /* Управляющие элементы слайдера */
 /* -------------------------------------------------------- */
 
-.hero__controls {
-  display: flex;
-  justify-content: center;
-}
-
 .hero__button {
   margin-left: 20px;
   align-self: self-start;
@@ -137,16 +183,55 @@ picture:has(.hero__image) {
   &.disabled {
     background-color: $button-color-primary-disabled;
     pointer-events: none;
+    cursor: default;
   }
 }
+
+.hero__controls {
+  justify-content: center;
+  display: none;
+  z-index: 9;
+
+  @media (min-width: $desktop-width) {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 8px;
+    bottom: 60px;
+  }
+}
+
+/* Шаги в слайдере по количеству карточек */
 
 .hero__step {
-  display: none;
+  padding: 10px 0;
+  border: none;
+  background-color: transparent;
 
-  @media (min-width: $tablet-width) {
+  &::before {
+    content: "";
     display: block;
+    width: 62px;
+    height: 4px;
+    background-color: $bg-color-primary;
+  }
+
+  &:hover::before,
+  &:focus-visible::before {
+    background-color: rgba($button-color-primary, 0.25);
+  }
+
+  &:active::before {
+    background-color: $button-color-primary;
+  }
+
+  &--current::before {
+    background-color: $button-color-primary;
   }
 }
+
+/* Стрелки слайдера */
 
 .hero__arrow {
   position: absolute;
@@ -155,7 +240,11 @@ picture:has(.hero__image) {
   padding: 0;
   background-color: transparent;
   border: none;
+  outline: none;
   transform: translateY(-50%);
+  z-index: 10;
+  cursor: pointer;
+  pointer-events: auto;
 
   &::before {
     content: "";
@@ -169,15 +258,40 @@ picture:has(.hero__image) {
     mask-image: url("../../icons/arrow.svg");
   }
 
+  &:hover {
+    background-image: linear-gradient(to right, $button-color-secondary, transparent);
+  }
+
+  &:focus-visible,
+  &:active {
+    background-image: linear-gradient(to right, rgba($button-color-primary, 0.25), transparent);
+  }
+
+  &:disabled {
+    cursor: default;
+    pointer-events: none;
+
+    &::before {
+      background-color: $icon-color-primary-subtle;
+    }
+  }
+
+  @media (min-width: $tablet-width) {
+    padding: 0 30px;
+    border-bottom: 188px solid $bg-color-primary;
+  }
+
+  @media (min-width: $desktop-width) {
+    padding: 0 30px;
+    border-bottom: none;
+  }
+
   &--prev {
     inset-inline-start: 0;
   }
 
   &--next {
     inset-inline-end: 0;
-
-    &::before {
-      transform: rotate(180deg);
-    }
+    transform: scaleX(-1) translateY(-50%);
   }
 }

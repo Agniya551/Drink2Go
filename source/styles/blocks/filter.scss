@@ -1,10 +1,11 @@
 /* Классы для блока фильтрами */
 
 .filter {
+  display: grid;
+  gap: 30px;
+
   @media (min-width: $tablet-width) {
-    display: grid;
     grid-template-columns: repeat(3, 1fr);
-    column-gap: 30px;
   }
 
   @media (min-width: $desktop-width) {
@@ -20,28 +21,209 @@
 }
 
 .filter__title {
+  padding: 0;
   font-weight: 600;
 }
 
-.filter__price {
-  display: flex;
-  max-width: 280px;
+/* -------------------------------------------------------- */
+/* Фильтр цены */
+/* -------------------------------------------------------- */
+
+/* Контейнер слайдера */
+.filter__range {
+  width: 280px;
+  height: 4px;
+  margin: 30px auto 34px;
+  padding: 0 12px;
+  outline: 1px solid $input-color-secondary-disabled;
+  outline-offset: -2px;
+  border-radius: 0;
+  position: relative;
+  border: none;
+  cursor: pointer;
+
+  @media (min-width: $tablet-width) {
+    width: 223px;
+    margin: 30px auto;
+  }
+
+  @media (min-width: $desktop-width) {
+    width: 318px;
+  }
+  /* stylelint-disable */
+  &.noUi-target {
+    box-shadow: none;
+    border: none;
+  }
+  /* Активная часть полосы (между ручками) */
+  .noUi-connect {
+    background-color: $input-color-primary;
+    height: 4px;
+  }
+
+  /* Ручки слайдера */
+  .noUi-handle {
+    right: -12px;
+    top: -10px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: none;
+    background-color: $bg-color-primary;
+    outline: 2px solid $input-color-primary;
+    outline-offset: -2px;
+    box-shadow: none;
+    cursor: grab;
+
+    &::before,
+    &::after {
+      content: none;
+    }
+
+    &:hover,
+    &:focus-visible {
+      background-image: radial-gradient(circle, rgba($input-color-primary, 0.25) 8px, $bg-color-primary 8px);
+    }
+
+    &:active {
+      cursor: grabbing;
+      border-color: $input-color-primary-bold;
+      background-image: radial-gradient(circle, $input-color-primary-bold 8px, $bg-color-primary 8px);
+    }
+  }
+  /* stylelint-enable */
 }
+
+/* Обертка для input's */
+
+.filter__price {
+  position: relative;
+  display: flex;
+  gap: 44px;
+  margin: 24px 0 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 2px;
+    background-color: $input-color-secondary;
+    transform: translate(-50%, -50%);
+
+    @media (min-width: $desktop-width) {
+      width: 10px;
+    }
+  }
+
+  @media (min-width: $tablet-width) {
+    gap: 48px;
+    margin: 20px 0 0;
+  }
+
+  @media (min-width: $desktop-width) {
+    gap: 50px;
+    margin: 22px 0 0;
+  }
+}
+
+/* Inputs для вывода минимальной и максимальной цены */
 
 .filter__input {
   @include font-settings($font-montserrat, normal, 500, 16, 24);
-  min-width: 0;
+  flex: 1;
+  max-width: 118px;
+  padding: 8px 10px;
   color: $text-color-primary;
+  text-align: center;
+  border: none;
+  outline: 2px solid $input-color-primary;
+  outline-offset: -2px;
+  border-radius: 4px;
+  background-color: $bg-color-primary;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 
   &::placeholder {
     color: $text-color-secondary;
   }
+
+  &:hover {
+    outline-color: $input-color-primary-bold;
+  }
+
+  &:focus-visible {
+    outline-color: $input-color-primary-bolder;
+  }
+
+  &:disabled {
+    color: $text-color-secondary;
+    outline-color: $input-color-secondary-disabled;
+    background-color: $bg-color-secondary;
+  }
+
+  @media (min-width: $tablet-width) {
+    max-width: 87px;
+  }
+
+  @media (min-width: $desktop-width) {
+    max-width: 134px;
+  }
 }
 
+/* Скрытие стрелок смены цены внутри input */
+
+/* stylelint-disable */
+.filter__input {
+  -moz-appearance: textfield;
+  appearance: textfield;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+}
+/* stylelint-enable */
+
+/* -------------------------------------------------------- */
+/* Списки с пунктами фильтрации */
+/* -------------------------------------------------------- */
+
 .filter__list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 20px 0 0;
+  padding: 0;
   font-size: 16px;
   line-height: 24px;
+  list-style: none;
 }
+
+.filter__label {
+  position: relative;
+  display: flex;
+  gap: 10px;
+}
+
+.filter__item {
+  &:has(.radio__input:disabled) {
+    color: $input-color-secondary;
+    pointer-events: none;
+  }
+
+  &:has(.switch__input:disabled) {
+    color: $input-color-secondary;
+    pointer-events: none;
+  }
+}
+
+/* Кнопки применения/сброса фильтров */
 
 .filter__button-wrap {
   display: flex;
@@ -52,5 +234,12 @@
     grid-column: 1/-1;
     flex-direction: row;
     justify-content: center;
+    margin: 10px 0 0;
+  }
+}
+
+.filter__button {
+  @media (min-width: $desktop-width) {
+    flex: 1;
   }
 }

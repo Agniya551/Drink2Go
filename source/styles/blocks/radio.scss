@@ -1,0 +1,39 @@
+/* Классы для radio button */
+
+.radio__input {
+  min-width: 24px;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  outline: 2px solid $input-color-secondary;
+  outline-offset: -2px;
+  background-color: $bg-color-primary;
+  appearance: none;
+
+  &:hover {
+    outline-color: $input-color-primary;
+    background-image: radial-gradient(circle, rgba($input-color-primary-bold, 0.25) 8px, transparent 8px);
+  }
+
+  &:focus-visible {
+    outline-width: 3px;
+  }
+
+  &:checked {
+    outline-color: $input-color-primary-bold;
+    background-image: radial-gradient(circle, $input-color-primary-bold 8px, transparent 8px);
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &:disabled {
+    background-color: transparent;
+    outline-color: $input-color-secondary-disabled;
+  }
+
+  &:checked:disabled {
+    background-image: radial-gradient(circle, $input-color-secondary-disabled 8px, transparent 8px);
+  }
+}

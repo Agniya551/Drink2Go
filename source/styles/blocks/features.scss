@@ -13,30 +13,49 @@
   }
 }
 
+/* -------------------------------------------------------- */
+/* Заголовочная секция блока */
+/* -------------------------------------------------------- */
+
+.features__eyebrow {
+  margin: 0;
+}
+
+.features__title {
+  margin: 4px 0 0;
+}
+
+/* -------------------------------------------------------- */
+/* Список преимуществ */
+/* -------------------------------------------------------- */
+
 .features__list {
   display: grid;
   gap: 32px;
-  margin: 0;
+  margin: 36px 0 0;
   padding: 0;
   list-style: none;
 
   @media (min-width: $tablet-width) {
     grid-template-columns: 1fr 1fr;
     gap: 50px 30px;
+    margin: 60px 0 0;
     padding: 0 10px;
     text-align: left;
   }
 
   @media (min-width: $desktop-width) {
     grid-template-columns: repeat(4, 1fr);
+    margin: 80px 0 0;
     padding: 0;
     text-align: center;
   }
 }
 
 .features__item {
+  display: grid;
+
   @media (min-width: $tablet-width) {
-    display: grid;
     grid-template-columns: 72px 267px;
   }
 
@@ -44,6 +63,10 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* -------------------------------------------------------- */
+/* Иконка в элементе */
+/* -------------------------------------------------------- */
 
 .features__icon {
   &::before {
@@ -59,16 +82,26 @@
     @media (min-width: $tablet-width) {
       grid-column: 1/2;
       grid-row: 1/3;
+      margin-right: 20px;
     }
 
     @media (min-width: $desktop-width) {
       grid-column: auto;
       grid-row: auto;
+      margin: 0;
     }
   }
-
+  /* Смена иконки по модификатору */
   &--speed::before {
     background-image: url("../../icons/speed.svg");
+
+    @media (min-width: $tablet-width) {
+      margin-top: 4px;
+    }
+
+    @media (min-width: $desktop-width) {
+      margin: 0;
+    }
   }
 
   &--fit::before {
@@ -81,26 +114,41 @@
 
   &--eco::before {
     background-image: url("../../icons/ecology.svg");
+
+    @media (min-width: $tablet-width) {
+      margin-top: 4px;
+    }
+
+    @media (min-width: $desktop-width) {
+      margin: 0;
+    }
   }
 }
 
+/* -------------------------------------------------------- */
+/* Текстовый контент */
+/* -------------------------------------------------------- */
+
 .features__subtitle {
-  margin: 0;
+  margin: 10px 0 0;
 
   @media (min-width: $tablet-width) {
     grid-column: 2/3;
+    margin: 0;
   }
 
   @media (min-width: $desktop-width) {
     grid-column: auto;
+    margin: 20px 0 0;
   }
 }
 
 .features__description {
-  margin: 0;
+  margin: 4px 0 0;
 
   @media (min-width: $tablet-width) {
     grid-column: 2/3;
+    margin: 10px 0 0;
   }
 
   @media (min-width: $desktop-width) {

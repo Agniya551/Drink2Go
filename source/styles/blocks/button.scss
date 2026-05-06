@@ -4,34 +4,45 @@
   @include font-settings($font-montserrat, normal, 400, 16, 24);
   padding: 8px 20px;
   align-content: center;
+  align-items: center;
   background-color: $button-color-primary;
   color: $text-color-inverse;
   text-align: center;
   border: none;
   border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  transition: $transition-fast;
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
     background-color: $button-color-primary-subtle;
+    transition: $transition-fast;
   }
 
   &:active {
     background-color: $button-color-primary-bold;
+    transition: $transition-fast;
   }
 
   &:disabled {
     background-color: $button-color-primary-disabled;
+    pointer-events: none;
   }
 
+  /* Второй стиль */
   &--secondary {
     color: $icon-color-accent;
     background-color: $button-color-secondary;
 
-    &:hover {
+    &:hover,
+    &:focus-visible {
       color: $icon-color-inverse;
       background-color: $button-color-primary-subtle;
     }
 
     &:active {
+      color: $icon-color-inverse;
       background-color: $button-color-primary-bold;
     }
 
@@ -41,6 +52,7 @@
     }
   }
 
+  /* Уменьшенный вариант */
   &--sm {
     font-size: 14px;
     line-height: 20px;

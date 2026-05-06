@@ -107,7 +107,7 @@ export function optimizeRaster () {
     return { formats };
   }
 
-  return src(`${PATH_TO_RAW}images/**/*.{png,jpg,jpeg}`, { encoding: false, nodir: true })
+  return src(`${PATH_TO_RAW}images/**/*.{png,jpg,jpeg}`)
     .pipe(sharp(createOptionsFormat()))
     .pipe(dest(`${PATH_TO_SOURCE}images`));
 }

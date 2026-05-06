@@ -36,6 +36,9 @@ $input-color-secondary: #bdbdbd;
 $input-color-secondary-disabled: #e2e2e2;
 
 $border-color-primary: #f0ebff;
+$border-color-accent: #7859cf;
+
+$shadow-color-primary: rgba(0, 0, 0, 0.15);
 
 /* Viewports */
 
@@ -46,3 +49,8 @@ $desktop-width: 1440px;
 /* Fonts */
 
 $font-montserrat: "Montserrat", "Arial", sans-serif;
+
+/* Animation */
+
+$transition-fast: 150ms;
+$transition-slow: 400ms;
