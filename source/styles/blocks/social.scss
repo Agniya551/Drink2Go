@@ -1,13 +1,41 @@
-/* Классы для социальных сетей */
+/* Классы для списка социальных сетей */
 
 .social {
   display: flex;
+  gap: 20px;
   justify-content: flex-end;
   flex-wrap: wrap;
-  padding: 20px;
+
+  @media (min-width: $desktop-width) {
+    place-content: start flex-start;
+  }
 }
 
+/* Обертка для иконки */
+
+.social__item {
+  border-radius: 4px;
+  transition: $transition-fast;
+
+  /* Меняем фон обертки при взаимодействии с иконкой */
+  &:hover,
+  &:focus-within {
+    background-color: $bg-color-accent-violet-subtle;
+  }
+}
+
+.social__item:has(.social__icon:active) {
+  background-color: rgba($button-color-primary, 0.25);
+  transition: $transition-fast;
+}
+
+/* -------------------------------------------------------- */
+/* Иконка */
+/* -------------------------------------------------------- */
+
 .social__icon {
+  outline: none;
+
   &::before {
     content: "";
     display: block;
@@ -17,10 +45,15 @@
     mask-position: center;
     mask-repeat: no-repeat;
     mask-size: 20px 20px;
+    transition: $transition-fast;
   }
 
-  &:hover::before {
-    background-color: $icon-color-accent;
+  &:hover,
+  &:focus-visible {
+    &::before {
+      background-color: $icon-color-accent;
+      transition: $transition-fast;
+    }
   }
 
   &--vk::before {

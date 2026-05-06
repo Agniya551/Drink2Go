@@ -2,6 +2,7 @@
 
 .pagination {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
   list-style: none;
 
@@ -10,63 +11,72 @@
   }
 }
 
-.pagination__item {
-  display: flex;
-}
-
 .pagination__button {
   display: flex;
   flex: 1;
-  align-items: center;
   justify-content: center;
   min-width: 40px;
   min-height: 40px;
-  padding: 8px 4px;
+  max-width: 150px;
+  padding: 8px;
   overflow-wrap: anywhere;
 
   &--current {
     font-weight: 600;
     color: $text-color-primary;
     background-color: transparent;
-
-    &:hover {
-      color: $text-color-primary;
-      background-color: transparent;
-      pointer-events: none;
-    }
-
-    &:active {
-      background-color: transparent;
-    }
+    pointer-events: none;
   }
-}
 
-.pagination__icon {
-  &::before {
+  &--prev::before,
+  &--next::before {
     content: "";
     display: block;
     width: 10px;
     height: 10px;
     background-color: $icon-color-accent;
+    mask-image: url("../../icons/arrow-sm.svg");
     mask-position: center;
     mask-repeat: no-repeat;
     mask-size: 10px 10px;
-    mask-image: url("../../icons/arrow-sm.svg");
+    transition: background-color $transition-fast;
+
+    @media (min-width: $tablet-width) {
+      display: none;
+    }
   }
 
-  &:hover::before {
+  &--prev:hover::before,
+  &--next:hover::before,
+  &--prev:focus-visible::before,
+  &--next:focus-visible::before,
+  &--prev:active::before,
+  &--next:active::before {
     background-color: $icon-color-inverse;
   }
 
-  &:disabled::before {
+  &--prev:disabled::before,
+  &--next:disabled::before {
     background-color: $icon-color-inverse;
   }
 
+  // Развороты стрелок
   &--prev::before {
     transform: rotate(90deg);
   }
 
   &--next::before {
     transform: rotate(-90deg);
+  }
+}
+
+/* Подпись к стрелке */
+
+.pagination__label {
+  display: none;
+
+  @media (min-width: $tablet-width) {
+    display: block;
+    padding: 0 12px;
   }
 }

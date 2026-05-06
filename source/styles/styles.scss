@@ -8,6 +8,8 @@
 @import "./blocks/page.scss";
 @import "./blocks/button.scss";
 @import "./blocks/title.scss";
+@import "./blocks/radio.scss";
+@import "./blocks/switch.scss";
 @import "./blocks/main.scss";
 @import "./blocks/header.scss";
 @import "./blocks/navbar.scss";
@@ -23,3 +25,4 @@
 @import "./blocks/menu.scss";
 @import "./blocks/contacts.scss";
 @import "./blocks/visually-hidden.scss";
+@import "../vendor/nouislider/nouislider.css";

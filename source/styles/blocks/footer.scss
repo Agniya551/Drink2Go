@@ -1,13 +1,21 @@
 /* Классы для блока Footer */
 
-picture:has(.footer__map),
-.footer__map {
-  display: block;
+/* -------------------------------------------------------- */
+/* Карта */
+/* -------------------------------------------------------- */
+
+picture:has(.footer__map) {
   position: relative;
+  display: block;
   left: 50%;
-  min-width: 320px;
   width: 100vw;
   transform: translateX(-50%);
+}
+
+.footer__map {
+  display: block;
+  min-width: 320px;
+  width: 100vw;
 
   @media (min-width: $tablet-width) {
     min-width: 768px;
@@ -18,25 +26,51 @@ picture:has(.footer__map),
   }
 }
 
-.footer__lists {
+/* -------------------------------------------------------- */
+/* Обертка для списков с пунктами меню */
+/* -------------------------------------------------------- */
+
+.footer__wrap {
   display: grid;
   grid-template-columns: 102px 1fr;
 
   @media (min-width: $tablet-width) {
     grid-template-columns: repeat(3, 1fr);
+    column-gap: 30px;
+    padding: 0 20px;
   }
 
   @media (min-width: $desktop-width) {
     grid-template-columns: repeat(4, 1fr);
+    padding: 0 40px;
   }
 }
 
+/* -------------------------------------------------------- */
+/* Логотип */
+/* -------------------------------------------------------- */
+
 .footer__logo-link {
   align-self: flex-start;
-  padding: 22px 0 0 20px;
+  margin: 22px 0 0 20px;
+  transition: $transition-fast;
+
+  &:hover,
+  &:focus-visible {
+    opacity: 0.8;
+    transition: $transition-fast;
+  }
+
+  &:active {
+    opacity: 0.6;
+    transition: $transition-fast;
+  }
+
+  @media (min-width: $tablet-width) {
+    margin: 40px 0 0;
+  }
 }
 
-picture:has(.footer__logo-img),
 .footer__logo-img {
   display: block;
   width: 82px;
@@ -46,14 +80,23 @@ picture:has(.footer__logo-img),
   }
 }
 
+/* Подпись к логотипу */
+
 .footer__logo-label {
   display: none;
 
   @media (min-width: $desktop-width) {
     display: flex;
     grid-column: 1/2;
+    margin: 10px 0 0;
+    font-size: 14px;
+    line-height: 20px;
   }
 }
+
+/* -------------------------------------------------------- */
+/* Списки */
+/* -------------------------------------------------------- */
 
 .footer__list {
   margin: 0;
@@ -61,26 +104,44 @@ picture:has(.footer__logo-img),
   list-style: none;
 }
 
+/* Список с иконками социальных сетей */
+
 .footer__list.social {
+  padding: 20px;
+
   @media (min-width: $tablet-width) {
     grid-column: 2 / 4;
+    padding: 40px 0 30px;
   }
 
   @media (min-width: $desktop-width) {
     grid-column: 1/2;
+    grid-row: 3/7;
+    padding: 50px 0 0;
   }
 }
 
-.footer__wrap {
+/* Обертка для стандартных списков меню */
+
+.footer__list-wrap {
   grid-column: 1/-1;
   padding: 20px;
   border-top: 1px solid $border-color-primary;
 
   @media (min-width: $tablet-width) {
     grid-column: auto;
+    padding: 0;
     border: none;
   }
+
+  @media (min-width: $desktop-width) {
+    margin: 49px 0 0;
+  }
 }
+
+/* -------------------------------------------------------- */
+/* Ссылка на разработчика */
+/* -------------------------------------------------------- */
 
 .footer__dev {
   display: flex;
@@ -92,7 +153,12 @@ picture:has(.footer__logo-img),
   border-top: 1px solid $border-color-primary;
 
   @media (min-width: $tablet-width) {
+    padding: 30px 20px 40px;
     border: none;
+  }
+
+  @media (min-width: $desktop-width) {
+    padding: 20px 40px 40px;
   }
 }
 
@@ -100,33 +166,42 @@ picture:has(.footer__logo-img),
   display: flex;
   margin-left: 3px;
   color: $text-color-secondary;
+  transition: $transition-fast;
 
-  &::before {
+  &::after {
     content: "";
     display: block;
+    flex-shrink: 0;
     width: 12px;
     height: 16px;
-    margin-right: 4px;
+    margin-left: 4px;
     background-color: $icon-color-primary-subtle;
     mask-position: center;
     mask-repeat: no-repeat;
     mask-size: 12px 16px;
     mask-image: url("../../icons/logo-html-academy.svg");
+    transition: $transition-fast;
   }
 
-  &:hover::before {
-    background-color: $icon-color-accent;
-  }
-
-  &:active::before {
-    background-color: $icon-color-accent-bold;
-  }
-
-  &:hover {
+  &:hover,
+  &:focus-visible {
     color: $text-color-accent;
+    transition: $transition-fast;
   }
 
   &:active {
     color: $text-color-accent-bold;
+    transition: $transition-fast;
+  }
+
+  &:hover::after,
+  &:focus-visible::after {
+    background-color: $icon-color-accent;
+    transition: $transition-fast;
+  }
+
+  &:active::after {
+    background-color: $icon-color-accent-bold;
+    transition: $transition-fast;
   }
 }

@@ -1,0 +1,80 @@
+/* Классы для switch (они же checkbox) */
+
+.switch__input {
+  position: relative;
+  width: 42px;
+  min-width: 42px;
+  height: 24px;
+  margin: 0;
+  appearance: none;
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+/* -------------------------------------------------------- */
+/* Дорожка переключателя */
+/* -------------------------------------------------------- */
+
+.switch__slider {
+  position: absolute;
+  width: 42px;
+  height: 24px;
+  border-radius: 12px;
+  background-color: $input-color-secondary;
+  cursor: pointer;
+  transition: $transition-slow;
+
+  /* Ручка переключателя */
+  &::before {
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    bottom: 2px;
+    background-color: $bg-color-primary;
+    border-radius: 50%;
+    transition: $transition-slow;
+  }
+}
+
+/* -------------------------------------------------------- */
+/* Настройка интерактивных состояний */
+/* -------------------------------------------------------- */
+
+:is(.switch__input:hover, .switch__input:focus-visible) + .switch__slider {
+  outline: 2px solid $input-color-primary;
+  outline-offset: -2px;
+  background-color: rgba($input-color-primary-bold, 0.25);
+  transition: 0ms;
+}
+
+.switch__input:disabled {
+  + .switch__slider {
+    background-color: $input-color-secondary-disabled;
+  }
+
+  + .switch__slider::before {
+    background-color: $bg-color-secondary;
+  }
+}
+
+.switch__input:checked {
+  + .switch__slider {
+    background-color: $input-color-primary-bold;
+  }
+
+  + .switch__slider::before {
+    transform: translateX(18px);
+  }
+
+  &:disabled + .switch__slider {
+    background-color: $input-color-secondary-disabled;
+  }
+
+  &:disabled + .switch__slider::before {
+    background-color: $input-color-secondary;
+  }
+}

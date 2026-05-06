@@ -5,17 +5,35 @@
   display: flex;
   align-items: flex-start;
   padding-left: 20px;
+
+  @media (min-width: $desktop-width) {
+    padding-left: 40px;
+  }
 }
+
+/* -------------------------------------------------------- */
+/* Логотип */
+/* -------------------------------------------------------- */
 
 .header__logo {
   padding: 12px 0;
+  transition: $transition-fast;
+
+  &:hover {
+    opacity: 0.8;
+    transition: $transition-fast;
+  }
+
+  &:active {
+    opacity: 0.6;
+    transition: $transition-fast;
+  }
 
   @media (min-width: $tablet-width) {
     padding: 22px 0;
   }
 }
 
-picture:has(.header__logo-img),
 .header__logo-img {
   display: block;
   width: 32px;
@@ -28,6 +46,8 @@ picture:has(.header__logo-img),
     width: 170px;
   }
 }
+
+/* Подпись к логотипу */
 
 .header__logo-label {
   display: none;

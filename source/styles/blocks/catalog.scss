@@ -3,7 +3,7 @@
 .catalog {
   display: grid;
   position: relative;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, auto);
   padding: 50px 20px 44px;
 
   &::before {
@@ -24,40 +24,78 @@
   }
 
   @media (min-width: $desktop-width) {
-    grid-template-columns: 338px repeat(3, auto);
+    grid-template-columns: 348px repeat(3, auto);
+    padding: 100px 40px 120px;
   }
 }
 
+/* -------------------------------------------------------- */
+/* Заголовочная секция блока */
+/* -------------------------------------------------------- */
+
 .catalog__eyebrow {
   grid-column: 1/-1;
+  margin: 0;
   text-align: center;
 }
 
 .catalog__title {
   grid-column: 1/-1;
+  margin: 4px 0 0;
   text-align: center;
-}
-
-.catalog__filter {
-  grid-column: 1/-1;
-  padding-bottom: 36px;
 
   @media (min-width: $desktop-width) {
-    grid-column: 1/2;
-    grid-row: 3/5;
+    margin: 4px 0 36px;
   }
 }
 
-.catalog__sorting {
+/* -------------------------------------------------------- */
+/* Фильтрация карточек */
+/* -------------------------------------------------------- */
+
+.catalog__filter {
+  grid-column: 1/-1;
+  margin: 20px 0 40px;
+
+  @media (min-width: $desktop-width) {
+    grid-column: 1/2;
+    grid-row: 4/6;
+    margin: -27px 30px 0 0;
+  }
+}
+
+/* -------------------------------------------------------- */
+/* Сортировка карточек */
+/* -------------------------------------------------------- */
+
+/* Обертка для Select чтобы добавить кастомную стрелку */
+
+.catalog__sorting-wrap {
+  position: relative;
+  display: flex;
+  align-self: flex-start;
   grid-column: 2/3;
-  min-width: 0;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 600;
-  color: $text-color-accent;
+  margin-right: -3px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    width: 10px;
+    height: 10px;
+    background-color: $icon-color-accent;
+    mask-image: url("../../icons/arrow-sm.svg");
+    mask-repeat: no-repeat;
+    mask-size: 10px;
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition: $transition-fast;
+  }
 
   @media (min-width: $tablet-width) {
     grid-column: 3/4;
+    margin-right: 0;
   }
 
   @media (min-width: $desktop-width) {
@@ -65,12 +103,69 @@
   }
 }
 
+/* Сам Select */
+
+.catalog__sorting {
+  width: 165px;
+  margin-right: -3px;
+  padding: 4px 30px 4px 10px;
+  font-family: $font-montserrat;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  color: $text-color-accent;
+  text-align: right;
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  appearance: none;
+  transition: $transition-fast;
+
+  &:hover,
+  &:focus-visible {
+    outline: none;
+    background-color: $bg-color-accent-violet-subtle;
+    transition: $transition-fast;
+  }
+
+  &:disabled {
+    color: $text-color-secondary;
+    background-color: transparent;
+    pointer-events: none;
+  }
+
+  @media (min-width: $tablet-width) {
+    margin-right: 0;
+  }
+}
+
+/* Поворот стрелки, когда Select получил focus */
+
+.catalog__sorting-wrap:focus-within::after {
+  transform: translateY(-50%) rotate(180deg);
+  transition: $transition-fast;
+}
+
+/* Меняем цвет стрелки в состоянии disabled */
+
+.catalog__sorting-wrap:has(.catalog__sorting:disabled)::after {
+  background-color: $icon-color-primary-subtle;
+}
+
+/* Подпись к списку выбора */
+
 .catalog__sorting-title {
   grid-column: 1/2;
+  align-content: center;
+  margin: 0 8px 0 3px;
   font-weight: 600;
 
   @media (min-width: $tablet-width) {
     grid-column: 2/3;
+    margin: 0 16px 0 0;
   }
 
   @media (min-width: $desktop-width) {
@@ -78,18 +173,22 @@
   }
 }
 
+/* -------------------------------------------------------- */
+/* Список карточек */
+/* -------------------------------------------------------- */
+
 .catalog__list {
   display: grid;
   grid-column: 1/-1;
   gap: 20px;
-  margin: 0;
-  padding: 16px 0 0;
+  margin: 16px 0 0;
+  padding: 0;
   list-style: none;
 
   @media (min-width: $tablet-width) {
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
-    padding: 26px 0 0;
+    margin: 26px 0 0;
   }
 
   @media (min-width: $desktop-width) {
@@ -98,12 +197,20 @@
   }
 }
 
+/* -------------------------------------------------------- */
+/* Пагинация */
+/* -------------------------------------------------------- */
+
 .catalog__pagination {
   grid-column: 1/-1;
-  margin: 0;
-  padding: 40px 0 0;
+  margin: 40px 0 0;
+  padding: 0;
 
   @media (min-width: $tablet-width) {
-    padding: 70px 0 0;
+    margin: 70px 0 0;
+  }
+
+  @media (min-width: $desktop-width) {
+    margin: 60px 0 0;
   }
 }

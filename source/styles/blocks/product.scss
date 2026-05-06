@@ -1,24 +1,36 @@
 /* Классы для блока карточек товаров в каталоге */
 
 .product {
-  display: grid;
-  grid-template-columns: minmax(auto, 90px) 1fr;
+  display: flex;
+  flex-direction: column;
   padding: 40px 20px 20px;
   background-color: $bg-color-primary;
+  border-radius: 4px;
+  outline: none;
+  color: $text-color-primary;
+  transition: $transition-fast;
 
   @media (min-width: $tablet-width) {
     padding: 50px 30px 30px;
   }
+
+  @media (min-width: $desktop-width) {
+    &:hover,
+    &:focus-visible {
+      box-shadow: 0 5px 15px $shadow-color-primary;
+      transition: $transition-fast;
+    }
+  }
 }
 
-.product__link-title {
-  grid-column: 1/-1;
-}
+/* -------------------------------------------------------- */
+/* Фото товара */
+/* -------------------------------------------------------- */
 
 .product__link-img {
-  grid-column: 1/-1;
-  grid-row: 1/2;
+  display: grid;
   justify-items: center;
+  order: -1;
 }
 
 picture:has(.product__img),
@@ -27,33 +39,71 @@ picture:has(.product__img),
   width: 130px;
 }
 
+/* -------------------------------------------------------- */
+/* Текстовый контент */
+/* -------------------------------------------------------- */
+
+.product__link-title {
+  grid-column: 1/-1;
+}
+
 .product__title {
+  margin: 24px 0 0;
   color: $text-color-primary;
+
+  @media (min-width: $tablet-width) {
+    margin: 30px 0 0;
+  }
 }
 
 .product__description {
   grid-column: 1/-1;
+  margin: 4px 0 16px;
+
+  @media (min-width: $tablet-width) {
+    margin: 10px 0 20px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+/* -------------------------------------------------------- */
+/* Цена + Кнопка */
+/* -------------------------------------------------------- */
+
+.product__wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: auto;
 }
 
 .product__price {
-  align-content: center;
-  margin: 0 0 -2px -2px;
+  min-width: 60px;
+  max-width: 100px;
+  margin-left: -2px;
+  padding: 2px 0;
   font-size: 20px;
   line-height: 32px;
   font-weight: 600;
+  overflow-wrap: anywhere;
 
   &::after {
     content: "₽";
   }
 }
 
+/* Кнопка */
+
 .product__button {
   display: flex;
-  justify-self: self-end;
+  gap: 6px;
 
   &::before {
     content: "";
     display: block;
+    flex-shrink: 0;
     width: 20px;
     height: 16px;
     background-color: $icon-color-inverse;

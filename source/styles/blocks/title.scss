@@ -3,16 +3,19 @@
 .title {
   @include font-settings($font-montserrat, normal, 700, 18, 32);
 
+  @media (min-width: $tablet-width) {
+    font-size: 24px;
+    line-height: 36px;
+  }
+
+  /* Варианты размеров заголовков */
+  /* Маленький */
   &--sm {
     font-size: 16px;
     line-height: 24px;
-
-    @media (min-width: $tablet-width) {
-      font-size: 24px;
-      line-height: 36px;
-    }
   }
 
+  /* Большой */
   &--lg {
     font-size: 24px;
     line-height: 36px;
@@ -23,6 +26,7 @@
     }
   }
 
+  /* Самый большой */
   &--xl {
     font-size: 36px;
     line-height: 48px;
