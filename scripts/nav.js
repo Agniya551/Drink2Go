@@ -1,0 +1,1 @@
+var e=document.querySelector(".navbar"),a=document.querySelector(".navbar__toggle");e&&a&&a.addEventListener("click",()=>{e.classList.contains("navbar--opened")?(e.classList.remove("navbar--opened"),a.setAttribute("aria-expanded","false")):(e.classList.add("navbar--opened"),a.setAttribute("aria-expanded","true"))});
